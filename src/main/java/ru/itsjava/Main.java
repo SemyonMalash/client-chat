@@ -1,8 +1,6 @@
 package ru.itsjava;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class Main {
@@ -16,6 +14,11 @@ public class Main {
             PrintWriter serverWriter = new PrintWriter(socket.getOutputStream());
             serverWriter.println("Yo");
             serverWriter.flush();
+
+            BufferedReader serverReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            while (true) {
+                System.out.println(serverReader.readLine());
+            }
         }
     }
 }
