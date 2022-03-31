@@ -1,6 +1,7 @@
-package ru.itsjava.services;
+package ru.itsjava.services.impl;
 
 import lombok.SneakyThrows;
+import ru.itsjava.services.MessageInputService;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

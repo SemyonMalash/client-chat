@@ -1,45 +1,48 @@
-package ru.itsjava.services;
+package ru.itsjava.services.impl;
 
 import lombok.SneakyThrows;
+import ru.itsjava.services.MessageInputService;
+import ru.itsjava.services.RegistrationService;
 
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientServiceImpl implements ClientService {
-    public static final int PORT = 8081;
-    public static final String HOST = "localhost";
+import static ru.itsjava.services.impl.ClientServiceImpl.HOST;
+import static ru.itsjava.services.impl.ClientServiceImpl.PORT;
+
+public class RegistrationServiceImpl implements RegistrationService {
 
     @SneakyThrows
     @Override
-    public void start() {
+    public void registrate() {
         Socket socket = new Socket(HOST, PORT);
         if (socket.isConnected()) {
-            Thread thread = new Thread(new SocketRunnable(socket));
-            thread.start();
+            new Thread(new SocketRunnable(socket)).start();
 
             PrintWriter serverWriter = new PrintWriter(socket.getOutputStream());
             MessageInputService messageInputService = new MessageInputServiceImpl(System.in);
 
-            System.out.println("Введите свой логин");
+            System.out.println("Придумайте логин:");
             String login = messageInputService.getMessage();
 
-            System.out.println("Введите свой пароль:");
+            System.out.println("Придумайте пароль:");
             String password = messageInputService.getMessage();
 
-            //!autho!login:password
-            serverWriter.println("!autho!" + login + ":" + password);
+            serverWriter.println("!registr!" + login + ":" + password);
             serverWriter.flush();
+
+            System.out.println("Вы успешно зарегистрированы");
 
             while (true) {
                 String consoleMessage = messageInputService.getMessage();
                 if (consoleMessage.equals("Exit")) {
                     socket.close();
                     System.exit(-1);
-
-                    serverWriter.println(consoleMessage);
-                    serverWriter.flush();
                 }
+                serverWriter.println(consoleMessage);
+                serverWriter.flush();
             }
         }
     }
 }
+
