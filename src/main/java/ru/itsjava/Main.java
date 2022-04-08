@@ -1,6 +1,6 @@
 package ru.itsjava;
 
-import ru.itsjava.services.impl.ClientServiceImpl;
+import ru.itsjava.impl.ClientServiceImpl;
 
 public class Main {
 

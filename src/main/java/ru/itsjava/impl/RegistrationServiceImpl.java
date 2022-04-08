@@ -1,4 +1,4 @@
-package ru.itsjava.services.impl;
+package ru.itsjava.impl;
 
 import lombok.SneakyThrows;
 import ru.itsjava.services.MessageInputService;
@@ -7,8 +7,8 @@ import ru.itsjava.services.RegistrationService;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import static ru.itsjava.services.impl.ClientServiceImpl.HOST;
-import static ru.itsjava.services.impl.ClientServiceImpl.PORT;
+import static ru.itsjava.impl.ClientServiceImpl.HOST;
+import static ru.itsjava.impl.ClientServiceImpl.PORT;
 
 public class RegistrationServiceImpl implements RegistrationService {
 

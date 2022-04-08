@@ -1,4 +1,4 @@
-package ru.itsjava.services.impl;
+package ru.itsjava.impl;
 
 import lombok.SneakyThrows;
 import ru.itsjava.services.MessageInputService;
