@@ -13,6 +13,7 @@ public class AuthorizationServiceImpl implements AuthorizationService, Reauthori
     String password;
     Socket socket;
 
+
     @SneakyThrows
     @Override
     public void authorize() {
